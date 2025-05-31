@@ -1,0 +1,43 @@
+<%- include('layouts') -%>
+    <section class="vh-65" style="background-color: aliceblue;">
+        <div class="container py-5 h-70 ">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+
+                        <div class="card-body p-5 ">
+                            <div class="text-center">
+                                <img src="https://support.rebrandly.com/hc/article_attachments/17480600761373"
+                                    alt="Logo" width="100" height="70" class="d-inline-block align-text-top">
+                                <h1 class="mb-5 mt-3">Sign in</h1>
+                            </div>
+                            <form action="/login" method="post">
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label text-left" for="typeEmailX-2">Username</label>
+                                    <input type="text" name="username" class="form-control form-control-lg" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="typePasswordX-2">Password</label>
+                                    <input type="password" name="password" class="form-control form-control-lg" />
+                                </div>
+
+                                <% if (errorMessage) { %>
+                                    <p style="color: red;">
+                                        <%= errorMessage %>
+                                    </p>
+                                <% } %>
+
+                                <div class="text-center">
+                                    <button data-mdb-button-init data-mdb-ripple-init
+                                        class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                                    <p class="mt-3">Don't have an account? <a href="register"
+                                            class="text-blue-50 fw-bold">Register</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

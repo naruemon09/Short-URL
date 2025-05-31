@@ -1,0 +1,48 @@
+<%- include('layouts') -%>
+    <section class="vh-100 gradient-custom" style="background-color: aliceblue;">
+        <div class="container py-4 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">Sign up</h1>
+                            <form action="/register" method="post">
+
+                                <div data-mdb-input-init class="form-outline mb-2">
+                                    <label class="form-label" for="firstName">Username</label>
+                                    <input type="text" name="username" class="form-control form-control-lg" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-2">
+                                    <label class="form-label" for="emailAddress">Email</label>
+                                    <input type="email" name="email" class="form-control form-control-lg" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-2">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" name="password" class="form-control form-control-lg" />
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-2">
+                                    <label class="form-label" for="password2">Confirm password</label>
+                                    <input type="password" name="password2" class="form-control form-control-lg" />
+                                </div>
+
+                                <% if (errorMessage) { %>
+                                    <p style="color: red;"><%= errorMessage %></p>
+                                <% } %>
+
+                                <div class="mt-4 pt-2">
+                                    <button data-mdb-button-init data-mdb-ripple-init
+                                        class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                                    <p class="mt-3">Have already an account? <a href="/"
+                                        class="text-blue-50 fw-bold">Login here</a></p>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
