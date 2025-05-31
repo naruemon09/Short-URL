@@ -11,6 +11,7 @@ const connection = new Pool({
   }
 });
 
+
 console.log('Connected to MySQL database');
 
 export default connection;
