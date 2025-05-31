@@ -80,14 +80,24 @@ app.get('/', async (req, res) => {
 app.get('/list', async (req, res) => {
   const username = req.cookies.username;
   try {
-    const { rows: click } = await connection.query(
-      `SELECT u.original_url, u.short_url, u.qr_code, COUNT(c.short_url) AS click_count
-       FROM url u
-       JOIN clicks c ON u.short_url = c.short_url
-       GROUP BY u.short_url, u.original_url, u.qr_code`
+    const { rows: login } = await connection.query(
+      'SELECT * FROM "user" WHERE username = $1',
+      [username]
     );
 
-    return res.render('lists', { username, click });
+    if (login.length > 0) {
+      const { rows: click } = await connection.query(
+        `SELECT u.original_url, u.short_url, u.qr_code, COUNT(c.short_url) AS click_count
+        FROM url u
+        JOIN clicks c ON u.short_url = c.short_url
+        GROUP BY u.short_url, u.original_url, u.qr_code`
+      );
+
+      return res.render('lists', { username, click }); 
+    } else {
+      return res.redirect('/login');
+    }
+
   } catch (error) {
     console.error(error);
   }
