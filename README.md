@@ -5,6 +5,15 @@
 1. Clone or download this repository to your local machine.
    
 ```
-$ npm install --save @github/clipboard-copy-element
+git clone https://github.com/naruemon09/Short-URL.git
 ```
 
+2. Navigate to the project directory.
+
+```
+cd Short-URL
+```
+3. Install project dependencies.
+```
+npm install
+```
