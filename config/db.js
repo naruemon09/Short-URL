@@ -5,10 +5,8 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 const connection = new Pool({
-  database: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.PGSSLMODE === 'disable' ? false : { rejectUnauthorized: false }
 });
 
 // const connection = new Pool({
@@ -19,8 +17,13 @@ const connection = new Pool({
 //   database: process.env.DB_NAME,
 //   ssl: false
 // });
-
-
-console.log('Connected to MySQL database');
-
 export default connection;
+
+connection.query('SELECT NOW()')
+  .then(result => {
+    console.log('Connected! Time:', result.rows[0].now);
+    connection.end(); // ปิด connection
+  })
+  .catch(err => {
+    console.error('Database error:', err.message);
+  });
