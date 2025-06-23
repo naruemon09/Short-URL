@@ -30,7 +30,7 @@ app.post('/login', async (req, res) => {
     res.cookie('username', username);
     return res.redirect(`/`);
   } catch (error) {
-    res.send('Server Error');
+    res.send(error);
   }
 });
 
@@ -61,7 +61,7 @@ app.post('/register', async (req, res) => {
 
     res.render('login', { username: null, errorMessage: null });
   } catch (error) {
-    res.send('Server Error');
+    res.send(error);
   }
 });
 
