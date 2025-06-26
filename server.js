@@ -131,7 +131,7 @@ app.post('/url', async (req, res) => {
       await sql`
         INSERT INTO clicks (short_url, clicked_at, username) VALUES (${short_url}, ${new Date()}, ${username})`
 
-      const fullShort_url = `http://localhost:3000/${short_url}`;
+      const fullShort_url = `http://example/${short_url}`;
       return res.render('home', { username, short_url: fullShort_url, qr_code });
     } else {
       return res.redirect('/login');
