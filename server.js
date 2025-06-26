@@ -116,7 +116,7 @@ app.post('/url', async (req, res) => {
       let short_url, qr_code;
       if (checkURL.length === 0) {
         short_url = shortid.generate();
-        const fullShort_url = `http://localhost:3000/${short_url}`;
+        const fullShort_url = `http://test/${short_url}`;
         qr_code = await QRCode.toDataURL(fullShort_url);
 
         await sql`
@@ -150,9 +150,9 @@ app.get('/:short_url', async (req, res) => {
 
     if (result.length > 0) {
       const original_url = result[0].original_url;
-      res.redirect(original_url);
+      return res.redirect(original_url);
     } else {
-      res.send('Short URL not found');
+      return res.send('Short URL not found');
     }
   } catch (error) {
     res.send('Server Error');
