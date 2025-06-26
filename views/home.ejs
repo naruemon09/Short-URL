@@ -37,7 +37,7 @@
                                             <h3 class="fw-bold mb-5">QR Code</h3>
                                             <label class="form-label" for="form3Examplev4">Shorten URL</label>
                                             <div class="p-3"
-                                                style="background-color: #dddcdc; min-width: 200px; height: 50px; border-radius: 10px;">
+                                                style="background-color: #dddcdc; min-width: 200px; min-height: 50px; border-radius: 10px;">
                                                 <% if (short_url) { %>
                                                     <a id="short-url" href="<%= `${short_url}` %>"
                                                         target="_blank" rel="noopener noreferrer">
@@ -47,7 +47,7 @@
                                             </div>
 
                                             <div class="card card-registration card-registration-2 mt-4"
-                                                style="border-radius: 15px; height: 18rem;">
+                                                style="border-radius: 15px; min-height: 50%;">
                                                 <div class="card-body p-100">
                                                     <% if (qr_code) { %>
                                                         <img src="<%= qr_code %>" width="50%"
