@@ -27,6 +27,8 @@ app.post('/login', async (req, res) => {
     }
 
     res.cookie('username', username);
+    res.cookie('username', username, {maxAge:3600 * 1000})
+
     return res.redirect('/');
   } catch (error) {
     console.error('Login error:', error);
