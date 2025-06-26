@@ -141,6 +141,10 @@ app.post('/url', async (req, res) => {
   }
 });
 
+app.get('/favicon.ico', (req, res) => {
+  res.status(204).end();
+});
+
 app.get('/:short_url', async (req, res) => {
   const short_url = req.params.short_url;
   const username = req.cookies.username
@@ -148,7 +152,7 @@ app.get('/:short_url', async (req, res) => {
   try {
     const result = await sql`
       SELECT * FROM url WHERE short_url = ${short_url}`
-
+    
     if (result.length > 0) {
       const original_url = result[0].original_url;
       await sql`
