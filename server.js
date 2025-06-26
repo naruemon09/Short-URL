@@ -116,7 +116,7 @@ app.post('/url', async (req, res) => {
       let short_url, qr_code;
       if (checkURL.length === 0) {
         short_url = shortid.generate();
-        const fullShort_url = `http://example.com/${short_url}`;
+        const fullShort_url = `http://${req.headers.host}/${short_url}`;
         qr_code = await QRCode.toDataURL(fullShort_url);
 
         await sql`
@@ -131,8 +131,7 @@ app.post('/url', async (req, res) => {
       await sql`
         INSERT INTO clicks (short_url, clicked_at, username) VALUES (${short_url}, ${new Date()}, ${username})`
 
-      const fullShort_url = `http://example.com/${short_url}`;
-      return res.render('home', { username, short_url: fullShort_url, qr_code });
+      return res.render('home', { username, short_url, qr_code });
     } else {
       return res.redirect('/login');
     }
@@ -143,6 +142,7 @@ app.post('/url', async (req, res) => {
 
 app.get('/:short_url', async (req, res) => {
   const short_url = req.params.short_url;
+  const username = req.cookies.username
 
   try {
     const result = await sql`
@@ -150,6 +150,10 @@ app.get('/:short_url', async (req, res) => {
 
     if (result.length > 0) {
       const original_url = result[0].original_url;
+      await sql`
+        INSERT INTO clicks (short_url, clicked_at, username)
+        VALUES (${short_url}, ${new Date()}, ${username})
+      `;
       return res.redirect(original_url);
     } else {
       return res.send('Short URL not found');
