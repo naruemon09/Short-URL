@@ -158,7 +158,7 @@ app.get('/:short_url', async (req, res) => {
   try {
     const result = await sql`
       SELECT * FROM url WHERE short_url = ${short_url}`
-    
+    console.log('🔍 DB result:', result);
     if (result.length > 0) {
       const original_url = result[0].original_url;
       await sql`
