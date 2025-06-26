@@ -22,7 +22,7 @@
                                         <th scope="row"><%= index + 1 %></th>
                                         <td><%= click.original_url %></td>
                                         <td><a href="<%= `${click.short_url}` %>" rel="noopener noreferrer">
-                                            "http://example.com/<%= click.short_url %>"</a></td>
+                                            <%= click.fullShort_url %></a></td>
                                         <td><img src="<%= click.qr_code %>" class="rounded d-block"></td>
                                         <td><%= click.click_count %></td>
                                     </tr>

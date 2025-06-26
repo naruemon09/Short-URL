@@ -74,9 +74,9 @@ app.get('/logout', (req, res) => {
 
 app.get('/', async (req, res) => {
   const username = req.cookies.username;
-  const { short_url, qr_code } = req.query;
+  const { short_url, qr_code, fullShort_url } = req.query;
 
-  res.render('home', { username, short_url, qr_code });
+  res.render('home', { username, short_url, fullShort_url, qr_code });
 });
 
 app.get('/list', async (req, res) => {
@@ -91,7 +91,12 @@ app.get('/list', async (req, res) => {
         FROM url u
         JOIN clicks c ON u.short_url = c.short_url
         GROUP BY u.short_url, u.original_url, u.qr_code`;
-      return res.render('lists', { username, click }); 
+      
+      const updatedClick = click.map(row => ({
+        ...row,
+        fullShort_url : `http://${req.headers.host}/${row.short_url}`
+      }));
+      return res.render('lists', { username, click: updatedClick }); 
     
     } else {
       return res.redirect('/login');
@@ -131,8 +136,9 @@ app.post('/url', async (req, res) => {
 
       await sql`
         INSERT INTO clicks (short_url, clicked_at, username) VALUES (${short_url}, ${new Date()}, ${username})`
-
-      return res.render('home', { username, short_url, qr_code });
+      
+      const fullShort_url = `http://${req.headers.host}/${short_url}`;
+      return res.render('home', { username, short_url,fullShort_url, qr_code });
     } else {
       return res.redirect('/login');
     }
