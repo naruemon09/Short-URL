@@ -94,7 +94,7 @@ app.get('/list', async (req, res) => {
       
       const updatedClick = click.map(row => ({
         ...row,
-        fullShort_url : `http://${req.headers.host}/${row.short_url}`
+        fullShort_url : `https://${req.headers.host}/${row.short_url}`
       }));
       return res.render('lists', { username, click: updatedClick }); 
     
@@ -122,7 +122,7 @@ app.post('/url', async (req, res) => {
       let short_url, qr_code;
       if (checkURL.length === 0) {
         short_url = shortid.generate();
-        const fullShort_url = `http://${req.headers.host}/${short_url}`;
+        const fullShort_url = `https://${req.headers.host}/${short_url}`;
         qr_code = await QRCode.toDataURL(fullShort_url);
 
         await sql`
@@ -137,7 +137,7 @@ app.post('/url', async (req, res) => {
       await sql`
         INSERT INTO clicks (short_url, clicked_at, username) VALUES (${short_url}, ${new Date()}, ${username})`
       
-      const fullShort_url = `http://${req.headers.host}/${short_url}`;
+      const fullShort_url = `https://${req.headers.host}/${short_url}`;
       return res.render('home', { username, short_url,fullShort_url, qr_code });
     } else {
       return res.redirect('/login');
