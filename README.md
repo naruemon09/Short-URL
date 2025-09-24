@@ -1,6 +1,6 @@
 # Short-URL
 #### https://short-url-sb4s.onrender.com
-#### ออกแบบและพัฒนาระบบ Short URL โดย Node.js + ejs + PostgreSQL
+#### Develop and deploy a Short URL & QR Code web application on Render, featuring URL shortening, QR code generation, click tracking, URL history, and personal link management.
 
 ## Install
 1. Clone or download this repository to your local machine. 
