@@ -13,7 +13,7 @@ A simple web application to **shorten long URLs** and generate **QR codes** for 
 Check it out here: [https://short-url-sb4s.onrender.com](https://short-url-sb4s.onrender.com)
 
 ## 🛠 Tech Stack
-- **Frontend:** EJS
+- **Frontend:** EJS (Embedded JavaScript)  
 - **Backend:** Node.js + Express  
 - **Database:** PostgreSQL
 
