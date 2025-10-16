@@ -10,8 +10,7 @@ A simple web application to **shorten long URLs** and generate **QR codes** for 
 - Simple and responsive UI
 
 ## 🌐 Live Demo
-Check it out here: [[https://yourappdomain.com](https://short-url-sb4s.onrender.com)]
-
+Check it out here: [https://short-url-sb4s.onrender.com](https://short-url-sb4s.onrender.com)
 
 ## 🛠 Tech Stack
 - **Frontend:** EJS
