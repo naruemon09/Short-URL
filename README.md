@@ -7,7 +7,11 @@ A simple web application to **shorten long URLs** and generate **QR codes** for 
 - Generate QR codes for shortened URLs  
 - Track click statistics and history  
 - RESTful API for backend integration  
-- Simple and responsive UI  
+- Simple and responsive UI
+
+## 🌐 Live Demo
+Check it out here: [[https://yourappdomain.com](https://short-url-sb4s.onrender.com)]
+
 
 ## 🛠 Tech Stack
 - **Frontend:** EJS
