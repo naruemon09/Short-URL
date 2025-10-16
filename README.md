@@ -16,7 +16,7 @@ A simple web application to **shorten long URLs** and generate **QR codes** for 
 
 ## ⚙️ Installation
 ```bash
-git clone https://github.com/yourusername/shout_url.git
+git clone https://github.com/naruemon09/Short-URL.git
 cd Short-URL
 npm install
 npm run dev
